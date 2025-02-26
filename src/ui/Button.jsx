@@ -1,14 +1,14 @@
 function Button({ variant = "primary", children, ...props }) {
-  const baseStyles = "px-3 py-2 font-bold text-xl";
+  const baseStyles = "px-4 py-2 text-xl";
 
   const variantStyles = {
-    primary: "bg-yellow-500 text-purple hover:bg-blue-600 shadow",
-    secondary: "border-2 border-white text-white hover:bg-gray-400",
+    primary: "bg-yellow-500 text-purple-950 w-fit shadow-2xl capitalize",
+    secondary: "font-bold border-2 border-white text-white",
   };
   return (
-    <div className={`${baseStyles} ${variantStyles[variant]} `} {...props}>
+    <button className={`${baseStyles} ${variantStyles[variant]} `} {...props}>
       {children}
-    </div>
+    </button>
   );
 }
 

@@ -1,10 +1,13 @@
+import Button from "./ui/Button";
 import NavBar from "./ui/NavBar";
 
 function App() {
   return (
     <>
       <NavBar />
-      <h1 className="text-3xl font-bold underline bg-blue-100">Hello world!</h1>
+      <div className="flex items-center justify-center mt-5">
+        <Button>NEW POST</Button>
+      </div>
     </>
   );
 }
