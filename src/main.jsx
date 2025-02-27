@@ -6,14 +6,14 @@ import AuthLayout from "./ui/AuthLayout";
 import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import App from "./App";
+import Dashboard from "./ui/Dashboard";
 
 const root = document.getElementById("root");
 
 ReactDOM.createRoot(root).render(
   <BrowserRouter>
     <Routes>
-      <Route index element={<App />} />
+      <Route index element={<Dashboard />} />
       <Route element={<AppLayout />}>
         <Route path="about" element={<About />} />
       </Route>
