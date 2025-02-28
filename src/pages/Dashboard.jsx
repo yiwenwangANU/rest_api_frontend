@@ -1,8 +1,8 @@
-import ModalButton from "./ModalButton";
-import { ModalProvider } from "./ModalContext";
-import ModalWindow from "./ModalWindow";
-import NavBar from "./NavBar";
-import NewPostForm from "./NewPostForm";
+import ModalButton from "../ui/ModalButton";
+import { ModalProvider } from "../ui/ModalContext";
+import ModalWindow from "../ui/ModalWindow";
+import NavBar from "../ui/NavBar";
+import NewPostForm from "../ui/NewPostForm";
 
 function Dashboard() {
   return (

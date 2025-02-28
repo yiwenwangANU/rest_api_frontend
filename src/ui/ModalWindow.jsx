@@ -25,10 +25,10 @@ function ModalWindow({ children }) {
         <div className="fixed inset-0 flex items-center justify-center">
           <div
             ref={modalref}
-            className="bg-white rounded-xl w-2/3 h-4/6 relative"
+            className="bg-white rounded-xl w-2/3 h-4/6 relative overflow-auto"
           >
             <XMarkIcon
-              className="w-10 h-10 absolute top-2 right-2 hover:bg-slate-100"
+              className="w-10 h-10 absolute top-2 right-2 hover:bg-slate-100 hover:cursor-pointer"
               onClick={handleCloseModal}
             />
             {children}

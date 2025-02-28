@@ -6,7 +6,7 @@ import AuthLayout from "./ui/AuthLayout";
 import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Dashboard from "./ui/Dashboard";
+import Dashboard from "./pages/Dashboard";
 
 const root = document.getElementById("root");
 
