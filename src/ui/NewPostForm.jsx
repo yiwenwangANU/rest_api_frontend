@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
-import Button from "./Button";
 import { useContext } from "react";
+import Button from "./Button";
 import { ModalContext } from "./ModalContext";
+import useCreatePost from "../hooks/useCreatePost";
 
 function NewPostForm() {
   const {
@@ -10,8 +11,12 @@ function NewPostForm() {
     formState: { errors },
   } = useForm();
   const { handleCloseModal } = useContext(ModalContext);
+  const mutation = useCreatePost();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    mutation.mutate(data);
+  };
 
   return (
     <form
@@ -58,7 +63,9 @@ function NewPostForm() {
         <span className="text-red-600">This field is required</span>
       )}
       <div className="flex flex-row gap-4 justify-end py-5">
-        <Button type="submit">Create</Button>
+        <Button type="submit" disabled={mutation.isLoading}>
+          {mutation.isPending ? "Creating..." : "Create"}
+        </Button>
         <Button type="button" variant="secondary" onClick={handleCloseModal}>
           Cancel
         </Button>

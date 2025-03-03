@@ -4,11 +4,13 @@ function Post() {
   const { data, isPending, isError, error } = useFetchPost();
   if (isPending) return <p>Loading...</p>;
   if (isError) return <p className="text-red-500">Error: {error.message}</p>;
+
+  const post = data?.posts[0];
   return (
-    <div>
-      <h2>Fetched Data</h2>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
+    <>
+      <div>{post.title}</div>
+      <div>{post.content}</div>
+    </>
   );
 }
 
