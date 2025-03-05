@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Button from "./Button";
 import { ModalContext } from "./ModalContext";
 import useCreatePost from "../hooks/useCreatePost";
@@ -12,6 +12,16 @@ function NewPostForm() {
   } = useForm();
   const { handleCloseModal } = useContext(ModalContext);
   const mutation = useCreatePost();
+
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setImagePreview(imageUrl);
+    }
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -45,7 +55,17 @@ function NewPostForm() {
         file:bg-purple-900 file:text-white file:font-bold
           hover:file:cursor-pointer hover:file:bg-white
         hover:file:text-purple-900"
+        onChange={handleImageChange}
       />
+      {imagePreview && (
+        <div className="mt-2">
+          <img
+            src={imagePreview}
+            alt="Preview"
+            className="mt-2 w-48 h-auto rounded-lg border border-gray-300"
+          />
+        </div>
+      )}
       <p className="px-2 mt-1 text-sm text-black" id="file_input_help">
         SVG, PNG, JPG or GIF (MAX. 800x400px).
       </p>

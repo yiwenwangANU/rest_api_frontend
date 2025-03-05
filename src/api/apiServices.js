@@ -20,11 +20,7 @@ export const createPost = async (postData) => {
   formData.append("content", postData.content);
   formData.append("image", postData.image[0]);
   try {
-    const response = await axios.post(`${API_BASE_URL}/feed/posts`, formData, {
-      headers: {
-        // "Content-Type": "application/json",
-      },
-    });
+    const response = await axios.post(`${API_BASE_URL}/feed/posts`, formData);
     return response.data;
   } catch (error) {
     console.error("Error posting data:", error);
