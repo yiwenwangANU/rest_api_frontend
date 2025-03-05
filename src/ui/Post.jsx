@@ -1,16 +1,18 @@
-import useFetchPost from "../hooks/useFetchPost";
+import { format } from "date-fns";
 
-function Post() {
-  const { data, isPending, isError, error } = useFetchPost();
-  if (isPending) return <p>Loading...</p>;
-  if (isError) return <p className="text-red-500">Error: {error.message}</p>;
-
-  const post = data?.posts[0];
+function Post({ post }) {
   return (
-    <>
-      <div>{post.title}</div>
-      <div>{post.content}</div>
-    </>
+    <div className="border-2 border-purple-900 flex flex-col gap-1 w-10/12 py-2 px-3">
+      <div className="text-stone-600">
+        Posted by {post.author} on {format(new Date(post.date), "dd/MM/yyyy")}
+      </div>
+      <div className="font-bold text-purple-900 text-3xl">{post.title}</div>
+      <div className="flex flex-row gap-2 justify-end">
+        <div>VIEW</div>
+        <div>EDIT</div>
+        <div>DELETE</div>
+      </div>
+    </div>
   );
 }
 
