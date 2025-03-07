@@ -24,7 +24,6 @@ function NewPostForm() {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     mutation.mutate(data);
   };
 

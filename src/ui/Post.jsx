@@ -7,7 +7,7 @@ function Post({ post }) {
         Posted by {post.author} on {format(new Date(post.date), "dd/MM/yyyy")}
       </div>
       <div className="font-bold text-purple-900 text-3xl">{post.title}</div>
-      <div className="flex flex-row gap-2 justify-end">
+      <div className="flex flex-row gap-2 justify-end text-stone-800">
         <div>VIEW</div>
         <div>EDIT</div>
         <div>DELETE</div>
