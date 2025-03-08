@@ -16,7 +16,7 @@ export const fetchPost = async () => {
 
 export const createPost = async (postData) => {
   const imageFile = postData.image[0];
-  let compressedFile;
+  let compressedFile, compressedImage;
   const options = {
     maxSizeMB: 1,
     maxWidthOrHeight: 1920,
@@ -24,6 +24,9 @@ export const createPost = async (postData) => {
   };
   try {
     compressedFile = await imageCompression(imageFile, options);
+    compressedImage = new File([compressedFile], imageFile.name, {
+      type: compressedFile.type,
+    });
   } catch (error) {
     console.log(error);
     throw error;
@@ -32,7 +35,7 @@ export const createPost = async (postData) => {
   const formData = new FormData();
   formData.append("title", postData.title);
   formData.append("content", postData.content);
-  formData.append("image", compressedFile);
+  formData.append("image", compressedImage);
   try {
     const response = await axios.post(`${API_BASE_URL}/feed/posts`, formData);
     console.log(response.data);
