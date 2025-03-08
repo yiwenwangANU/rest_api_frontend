@@ -4,7 +4,7 @@ import imageCompression from "browser-image-compression";
 const API_BASE_URL = "http://localhost:8080";
 
 // Fetch data from the API
-export const fetchPost = async () => {
+export const fetchPosts = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/feed/posts`);
     return response.data;
