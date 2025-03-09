@@ -3,14 +3,25 @@ import imageCompression from "browser-image-compression";
 // Base URL for API requests
 const API_BASE_URL = "http://localhost:8080";
 
-// Fetch data from the API
+// Fetch posts
 export const fetchPosts = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/feed/posts`);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
-    throw error; // Rethrow for error handling in components
+    throw error;
+  }
+};
+
+// Fetch single post
+export const fetchPost = async (postId) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/post/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
   }
 };
 

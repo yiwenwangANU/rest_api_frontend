@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import SinglePost from "./pages/SinglePost";
 
 const root = document.getElementById("root");
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ ReactDOM.createRoot(root).render(
         <Route index element={<Dashboard />} />
         <Route element={<AppLayout />}>
           <Route path="about" element={<About />} />
+          <Route path="post/:id" element={<SinglePost />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="login" element={<Login />} />

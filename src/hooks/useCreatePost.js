@@ -7,7 +7,7 @@ const useCreatePost = () => {
     mutationFn: createPost,
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["getPosts"] });
+      queryClient.invalidateQueries({ queryKey: ["getPosts", "getPost"] });
     },
     onError: (error) => {
       console.error("Error creating post:", error);
