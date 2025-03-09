@@ -17,8 +17,8 @@ ReactDOM.createRoot(root).render(
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <Routes>
-        <Route index element={<Dashboard />} />
         <Route element={<AppLayout />}>
+          <Route index element={<Dashboard />} />
           <Route path="about" element={<About />} />
           <Route path="post/:id" element={<SinglePost />} />
         </Route>
