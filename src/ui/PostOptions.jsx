@@ -1,4 +1,9 @@
-import { EllipsisHorizontalIcon } from "@heroicons/react/16/solid";
+import {
+  EllipsisHorizontalIcon,
+  PencilIcon,
+  StopIcon,
+  XMarkIcon,
+} from "@heroicons/react/16/solid";
 import { useEffect, useRef, useState } from "react";
 
 function PostOptions() {
@@ -32,15 +37,14 @@ function PostOptions() {
        hover:bg-violet-600 hover:rounded-3xl p-1"
       />
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10">
-          <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+        <div className="absolute flex flex-col right-0 mt-2 w-25 bg-gray-950 text-sm text-white rounded-md shadow-lg z-20">
+          <button className="w-full px-4 py-2 flex flex-row gap-3 hover:text-gray-300">
+            <PencilIcon className="w-3" />
             Edit
           </button>
-          <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <button className="w-full px-4 py-2 flex flex-row gap-3 hover:text-gray-300">
+            <XMarkIcon />
             Delete
-          </button>
-          <button className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            Report
           </button>
         </div>
       )}
