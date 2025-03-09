@@ -4,7 +4,7 @@ import { fetchPost } from "../api/apiServices";
 const useFetchPost = (postId) => {
   return useQuery({
     queryKey: ["getPost", postId],
-    queryFn: fetchPost(postId),
+    queryFn: () => fetchPost(postId),
   });
 };
 

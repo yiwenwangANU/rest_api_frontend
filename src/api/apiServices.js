@@ -17,7 +17,7 @@ export const fetchPosts = async () => {
 // Fetch single post
 export const fetchPost = async (postId) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/post/${postId}`);
+    const response = await axios.get(`${API_BASE_URL}/feed/post/${postId}`);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
