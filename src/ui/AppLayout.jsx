@@ -6,7 +6,7 @@ function AppLayout() {
     <div className="w-full min-h-screen bg-black flex justify-center">
       <div className="w-full flex flex-col gap-3.5 items-center">
         <NavBar />
-
+        <div className="pt-16"></div>
         <Outlet />
       </div>
     </div>
