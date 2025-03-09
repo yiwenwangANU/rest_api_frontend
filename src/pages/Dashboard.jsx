@@ -9,7 +9,7 @@ function Dashboard() {
   return (
     <ModalProvider>
       <NavBar />
-      <div className="flex flex-col gap-3.5 items-center justify-center mt-5">
+      <div className="flex flex-col gap-3.5 items-center justify-center pt-5 bg-black">
         <Posts />
         <ModalButton>NEW POST</ModalButton>
         <ModalWindow>
