@@ -1,17 +1,13 @@
 import { format } from "date-fns";
-import { Link } from "react-router";
 
 function PostDetails({ post }) {
   return (
-    <Link
-      to={`/post/${post._id}`}
-      className="border-b border-purple-900 flex flex-col gap-0 w-1/2 cursor-pointer"
-    >
-      <div className="rounded hover:bg-purple-950 py-2 px-3">
+    <div className="flex flex-col gap-0 w-3/4">
+      <div className="rounded py-2 px-3">
         <div className="text-stone-400 text-xs">
           XXX - {format(new Date(post.createdAt), "dd/MM/yyyy")}
         </div>
-        <div className="font-bold text-white text-xl">{post.title}</div>
+        <div className="font-bold text-white text-2xl pb-2">{post.title}</div>
         <div className="relative overflow-hidden">
           <div className="relative flex justify-center mt-0 bg-black/20">
             <img
@@ -26,8 +22,9 @@ function PostDetails({ post }) {
             </figure>
           </div>
         </div>
+        <div className="text-white text-xl">{post.content}</div>
       </div>
-    </Link>
+    </div>
   );
 }
 

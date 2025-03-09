@@ -5,7 +5,7 @@ function Post({ post }) {
   return (
     <Link
       to={`/post/${post._id}`}
-      className="border-b border-purple-900 flex flex-col gap-0 w-1/2 cursor-pointer"
+      className="border-b border-purple-900 flex flex-col gap-0 w-1/2"
     >
       <div className="rounded hover:bg-purple-950 py-2 px-3">
         <div className="text-stone-400 text-xs">
