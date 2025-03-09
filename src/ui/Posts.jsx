@@ -7,11 +7,10 @@ function Posts() {
   if (isError) return <p className="text-red-500">Error: {error.message}</p>;
 
   const posts = data?.posts;
-  console.log(posts);
   return (
     <>
       {posts.map((post) => (
-        <Post post={post} key={post._id} />
+        <Post post={post} key={post?._id} />
       ))}
     </>
   );
