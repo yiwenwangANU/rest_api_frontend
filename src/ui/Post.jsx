@@ -1,6 +1,6 @@
-import { EllipsisHorizontalIcon } from "@heroicons/react/16/solid";
 import { format } from "date-fns";
 import { Link } from "react-router";
+import PostOptions from "./PostOptions";
 
 function Post({ post }) {
   return (
@@ -12,7 +12,7 @@ function Post({ post }) {
         <div className="text-stone-400 text-xs">
           XXX - {format(new Date(post.createdAt), "dd/MM/yyyy")}
         </div>
-        <EllipsisHorizontalIcon className="w-7 text-stone-400 right-2 top-2 absolute hover:bg-violet-600 hover:rounded-3xl p-1" />
+        <PostOptions />
         <div className="font-bold text-white text-xl">{post.title}</div>
         <div className="relative overflow-hidden">
           <div className="relative flex justify-center mt-0 bg-black/20">
