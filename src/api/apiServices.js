@@ -102,3 +102,14 @@ export const editPost = async (postData) => {
     throw error; // Rethrow for error handling in components
   }
 };
+
+// Fetch single post
+export const deletePost = async (postId) => {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/feed/post/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
