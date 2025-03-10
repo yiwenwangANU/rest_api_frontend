@@ -11,10 +11,10 @@ function NewPostForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { modalContent, handleCloseModal } = useContext(ModalContext);
+  const { modalData, handleCloseModal } = useContext(ModalContext);
 
   const [imagePreview, setImagePreview] = useState(null);
-  const post = modalContent;
+  const post = modalData;
   const createMutation = useCreatePost();
   const editMutation = useEditPost();
   const mutation = post ? editMutation : createMutation;

@@ -3,8 +3,8 @@ import { ModalContext } from "./ModalContext";
 import Overlay from "./Overlay";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 
-function ModalWindow({ children }) {
-  const { open, handleCloseModal } = useContext(ModalContext);
+function ModalWindow() {
+  const { open, modalContent, handleCloseModal } = useContext(ModalContext);
 
   const modalref = useRef();
   //  Detect onside click of the modal and close the modal, disabled currently
@@ -31,7 +31,7 @@ function ModalWindow({ children }) {
               className="w-10 h-10 absolute top-2 right-2 hover:bg-slate-100 hover:cursor-pointer"
               onClick={handleCloseModal}
             />
-            {children}
+            {modalContent}
           </div>
         </div>
       </Overlay>
