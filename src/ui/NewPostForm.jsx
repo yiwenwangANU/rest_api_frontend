@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import Button from "./Button";
 import { ModalContext } from "./ModalContext";
 import useCreatePost from "../hooks/useCreatePost";
+import useEditPost from "../hooks/useEditPost";
 
 function NewPostForm() {
   const {
@@ -11,9 +12,12 @@ function NewPostForm() {
     formState: { errors },
   } = useForm();
   const { modalContent, handleCloseModal } = useContext(ModalContext);
-  const mutation = useCreatePost();
+
   const [imagePreview, setImagePreview] = useState(null);
   const post = modalContent;
+  const createMutation = useCreatePost();
+  const editMutation = useEditPost();
+  const mutation = post ? editMutation : createMutation;
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -33,12 +37,19 @@ function NewPostForm() {
       onSubmit={handleSubmit(onSubmit)}
     >
       <label className="py-4 mb-8 text-4xl font-bold text-purple-950 border-b-4 border-purple-950">
-        {post ? "Updata Post" : "New Post"}
+        {post ? "Edit Post" : "New Post"}
       </label>
+      {post ? (
+        <input
+          hidden
+          value={post._id}
+          {...register("postId", { required: true })}
+        />
+      ) : null}
       <label className="text-lg font-semibold">Title</label>
       <input
         className="font-bold text-xl border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        value={post?.title}
+        defaultValue={post?.title}
         {...register("title", { required: true })}
       />
       {errors.title && (
@@ -76,7 +87,7 @@ function NewPostForm() {
       <label className="text-lg font-semibold">Content</label>
       <textarea
         className="font-bold text-xl border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        value={post?.content}
+        defaultValue={post?.content}
         {...register("content", { required: true })}
       />
 
@@ -85,7 +96,13 @@ function NewPostForm() {
       )}
       <div className="flex flex-row gap-4 justify-end py-5">
         <Button type="submit" disabled={mutation.isLoading}>
-          {mutation.isPending ? "Creating..." : "Create"}
+          {post
+            ? mutation.isPending
+              ? "Updating..."
+              : "Update"
+            : mutation.isPending
+            ? "Creating..."
+            : "Create"}
         </Button>
         <Button type="button" variant="secondary" onClick={handleCloseModal}>
           Cancel
