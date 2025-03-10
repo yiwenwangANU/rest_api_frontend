@@ -29,7 +29,7 @@ function PostOptions({ post }) {
   const handleDelete = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    handleOpenModal(<ConfirmDelete />);
+    handleOpenModal(<ConfirmDelete postId={post._id} />);
   };
 
   // Close the popover when clicking outside
