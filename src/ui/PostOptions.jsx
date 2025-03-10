@@ -5,8 +5,6 @@ import {
 } from "@heroicons/react/16/solid";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ModalContext } from "./ModalContext";
-import ModalWindow from "./ModalWindow";
-import NewPostForm from "./NewPostForm";
 
 function PostOptions({ post }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,7 +21,7 @@ function PostOptions({ post }) {
   const handleEdit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    handleOpenModal();
+    handleOpenModal(post);
   };
 
   const handleDelete = (e) => {

@@ -4,16 +4,16 @@ import Button from "./Button";
 import { ModalContext } from "./ModalContext";
 import useCreatePost from "../hooks/useCreatePost";
 
-function NewPostForm({ post }) {
+function NewPostForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { handleCloseModal } = useContext(ModalContext);
+  const { modalContent, handleCloseModal } = useContext(ModalContext);
   const mutation = useCreatePost();
-
   const [imagePreview, setImagePreview] = useState(null);
+  const post = modalContent;
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
