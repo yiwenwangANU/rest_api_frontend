@@ -12,7 +12,7 @@ function Post({ post }) {
         <div className="text-stone-400 text-xs">
           XXX - {format(new Date(post.createdAt), "dd/MM/yyyy")}
         </div>
-        <PostOptions />
+        <PostOptions post={post} />
         <div className="font-bold text-white text-xl">{post.title}</div>
         <div className="relative overflow-hidden">
           <div className="relative flex justify-center mt-0 bg-black/20">

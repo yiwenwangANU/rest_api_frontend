@@ -4,7 +4,7 @@ import Button from "./Button";
 import { ModalContext } from "./ModalContext";
 import useCreatePost from "../hooks/useCreatePost";
 
-function NewPostForm() {
+function NewPostForm({ post }) {
   const {
     register,
     handleSubmit,
@@ -33,11 +33,12 @@ function NewPostForm() {
       onSubmit={handleSubmit(onSubmit)}
     >
       <label className="py-4 mb-8 text-4xl font-bold text-purple-950 border-b-4 border-purple-950">
-        New Post
+        {post ? "Updata Post" : "New Post"}
       </label>
       <label className="text-lg font-semibold">Title</label>
       <input
         className="font-bold text-xl border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={post?.title}
         {...register("title", { required: true })}
       />
       {errors.title && (
@@ -47,7 +48,7 @@ function NewPostForm() {
       <label className="block text-lg font-semibold mb-2">Upload File</label>
       <input
         type="file"
-        {...register("image", { required: "File is required" })}
+        {...register("image", post ? {} : { required: "File is required" })}
         className="border border-gray-300 rounded-lg w-full 
           focus:outline-none focus:ring-2 focus:ring-blue-500
         file:border-r-gray-300 file:border-r file:mr-5 file:py-1 file:px-3
@@ -75,6 +76,7 @@ function NewPostForm() {
       <label className="text-lg font-semibold">Content</label>
       <textarea
         className="font-bold text-xl border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        value={post?.content}
         {...register("content", { required: true })}
       />
 
