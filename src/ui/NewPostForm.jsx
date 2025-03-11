@@ -28,7 +28,7 @@ function NewPostForm() {
   };
 
   const onSubmit = (data) => {
-    mutation.mutate(data);
+    mutation.mutate(data, { onSuccess: () => handleCloseModal() });
   };
 
   return (
