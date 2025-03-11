@@ -12,8 +12,10 @@ function useDeletePost() {
       toast.success("Post deleted successfully!");
     },
     onError: (error) => {
-      console.error("Error creating post:", error);
-      toast.error("Error deleting post: " + error.message);
+      console.error("Error deleting post:", error);
+      const message =
+        error.response?.data?.message || error.message || "Error deleting post";
+      toast.error(message);
     },
   });
 }

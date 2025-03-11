@@ -9,11 +9,13 @@ const useEditPost = () => {
     onSuccess: () => {
       // Invalidate and refetch
       queryClient.invalidateQueries({ queryKey: ["getPosts"] });
-      toast.success("Post created successfully!");
+      toast.success("Post updated successfully!");
     },
     onError: (error) => {
-      console.error("Error creating post:", error);
-      toast.error("Error updating post: " + error.message);
+      console.error("Error updating post:", error);
+      const message =
+        error.response?.data?.message || error.message || "Error updating post";
+      toast.error("Error updating post: " + message);
     },
   });
 };

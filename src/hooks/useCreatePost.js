@@ -13,7 +13,9 @@ const useCreatePost = () => {
     },
     onError: (error) => {
       console.error("Error creating post:", error);
-      toast.error("Error creating post: " + error.message);
+      const message =
+        error.response?.data?.message || error.message || "Error creating post";
+      toast.error("Error creating post: " + message);
     },
   });
 };
