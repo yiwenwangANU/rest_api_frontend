@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import SinglePost from "./pages/SinglePost";
+import { ToastContainer } from "react-toastify";
 
 const root = document.getElementById("root");
 const queryClient = new QueryClient();
@@ -28,5 +29,6 @@ ReactDOM.createRoot(root).render(
         </Route>
       </Routes>
     </BrowserRouter>
+    <ToastContainer position="top-right" autoClose={3000} />
   </QueryClientProvider>
 );

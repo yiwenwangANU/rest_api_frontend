@@ -25,6 +25,7 @@ export const fetchPost = async (postId) => {
   }
 };
 
+// Create post
 export const createPost = async (postData) => {
   const imageFile = postData.image[0];
   let compressedFile, compressedImage;
@@ -61,6 +62,7 @@ export const createPost = async (postData) => {
   }
 };
 
+// edit post
 export const editPost = async (postData) => {
   const imageFile = postData.image[0];
   let compressedFile, compressedImage;
@@ -103,7 +105,7 @@ export const editPost = async (postData) => {
   }
 };
 
-// Fetch single post
+// Delete single post
 export const deletePost = async (postId) => {
   try {
     const response = await axios.delete(`${API_BASE_URL}/feed/post/${postId}`);

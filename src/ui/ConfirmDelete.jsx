@@ -7,7 +7,11 @@ function ConfirmDelete({ postId }) {
   const { handleCloseModal } = useContext(ModalContext);
   const mutation = useDeletePost();
   const handleDelete = () => {
-    mutation.mutate(postId);
+    mutation.mutate(postId, {
+      onSuccess: () => {
+        handleCloseModal();
+      },
+    });
   };
   return (
     <div className="w-full h-full flex flex-col gap-2 px-6 py-6 pb-4 bg-white shadow-lg rounded-lg">
