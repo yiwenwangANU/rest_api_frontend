@@ -8,7 +8,7 @@ const useEditPost = () => {
     mutationFn: editPost,
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["getPosts"] });
+      queryClient.invalidateQueries({ queryKey: ["getInfinityPosts"] });
       toast.success("Post updated successfully!");
     },
     onError: (error) => {

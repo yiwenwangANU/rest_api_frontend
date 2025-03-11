@@ -27,15 +27,14 @@ function Posts() {
   if (isPending) return <p>Loading...</p>;
   if (isError) return <p className="text-red-500">Error: {error.message}</p>;
 
-  const posts = data?.posts;
-  const currentPage = data?.currentPage;
-  const nextPage = data?.nextPage;
+  const pages = data?.pages;
+
   return (
     <>
-      {posts.map((post) => (
-        <Post post={post} key={post?._id} />
-      ))}
-      <p ref={ref}>{nextPage ? "Loading more posts..." : "No more data"}</p>
+      {pages.map((page) =>
+        page?.posts.map((post) => <Post post={post} key={post?._id} />)
+      )}
+      <div ref={ref}></div>
     </>
   );
 }

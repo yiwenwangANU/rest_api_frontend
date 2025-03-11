@@ -8,7 +8,7 @@ const useCreatePost = () => {
     mutationFn: createPost,
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["getPosts"] });
+      queryClient.invalidateQueries({ queryKey: ["getInfinityPosts"] });
       toast.success("Post created successfully!");
     },
     onError: (error) => {

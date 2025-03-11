@@ -59,7 +59,7 @@ function NewPostForm() {
       <label className="block text-lg font-semibold mb-2">Upload File</label>
       <input
         type="file"
-        {...register("image", post ? {} : { required: "File is required" })}
+        {...register("image")}
         className="border border-gray-300 rounded-lg w-full 
           focus:outline-none focus:ring-2 focus:ring-blue-500
         file:border-r-gray-300 file:border-r file:mr-5 file:py-1 file:px-3

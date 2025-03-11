@@ -40,22 +40,25 @@ export const fetchPost = async (postId) => {
 // Create post
 export const createPost = async (postData) => {
   const imageFile = postData.image[0];
-  // compress the image
   let compressedFile, compressedImage;
-  const options = {
-    maxSizeMB: 1,
-    maxWidthOrHeight: 1920,
-    useWebWorker: true,
-  };
-  try {
-    compressedFile = await imageCompression(imageFile, options);
-    compressedImage = new File([compressedFile], imageFile.name, {
-      type: compressedFile.type,
-    });
-  } catch (error) {
-    console.log(error);
-    throw error;
+  // if there is image upload, compress the image
+  if (imageFile) {
+    const options = {
+      maxSizeMB: 1,
+      maxWidthOrHeight: 1920,
+      useWebWorker: true,
+    };
+    try {
+      compressedFile = await imageCompression(imageFile, options);
+      compressedImage = new File([compressedFile], imageFile.name, {
+        type: compressedFile.type,
+      });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   }
+
   // create FormData for axios request
   const formData = new FormData();
   formData.append("title", postData.title);

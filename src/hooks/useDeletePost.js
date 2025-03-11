@@ -8,7 +8,7 @@ function useDeletePost() {
     mutationFn: deletePost,
     onSuccess: () => {
       // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["getPosts"] });
+      queryClient.invalidateQueries({ queryKey: ["getInfinityPosts"] });
       toast.success("Post deleted successfully!");
     },
     onError: (error) => {
