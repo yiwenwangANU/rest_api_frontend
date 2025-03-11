@@ -22,7 +22,7 @@ function Post({ post }) {
             />
             <figure className="h-full w-full m-0 z-10 flex justify-center">
               <img
-                className="h-full max-h-[100vw] object-contain mb-0 relative"
+                className="h-full max-h-90 object-contain mb-0 relative"
                 src={post.imageUrl}
               />
             </figure>
