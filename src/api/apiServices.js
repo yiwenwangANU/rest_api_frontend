@@ -14,6 +14,18 @@ export const fetchPosts = async () => {
   }
 };
 
+export const fetchInfinityPosts = async ({ pageParam = 1 }) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/feed/posts?page=${pageParam}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
 // Fetch single post
 export const fetchPost = async (postId) => {
   try {
@@ -28,6 +40,7 @@ export const fetchPost = async (postId) => {
 // Create post
 export const createPost = async (postData) => {
   const imageFile = postData.image[0];
+  // compress the image
   let compressedFile, compressedImage;
   const options = {
     maxSizeMB: 1,
@@ -43,14 +56,13 @@ export const createPost = async (postData) => {
     console.log(error);
     throw error;
   }
-
+  // create FormData for axios request
   const formData = new FormData();
   formData.append("title", postData.title);
   formData.append("content", postData.content);
   formData.append("image", compressedImage);
   try {
     const response = await axios.post(`${API_BASE_URL}/feed/posts`, formData);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     if (error.response) {
