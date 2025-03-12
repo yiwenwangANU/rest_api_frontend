@@ -38,7 +38,8 @@ function SignupForm() {
       <div className="relative mx-auto pt-4 w-full">
         <input
           id="email"
-          className="peer border border-gray-300 w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          placeholder="Email or username"
+          className="peer border border-gray-300 w-full rounded-lg p-2 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-purple-500"
           {...register("email", {
             required: "Please enter your email",
             maxLength: {
@@ -49,8 +50,8 @@ function SignupForm() {
         />
         <label
           htmlFor="email"
-          className="absolute cursor-pointer left-4 top-6 text-gray-400 transition-all duration-300 
-            peer-focus:top-4 peer-focus:text-xs"
+          className="absolute cursor-pointer left-4 top-4 text-xs text-gray-400 transition-all duration-300 
+            peer-focus:top-4 peer-focus:text-xs peer-placeholder-shown:top-6 peer-placeholder-shown:text-base"
         >
           Email
         </label>
@@ -61,8 +62,9 @@ function SignupForm() {
       <div className="relative mx-auto w-full">
         <input
           id="password"
+          placeholder="password"
           type="password"
-          className="peer border border-gray-300 w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="peer border border-gray-300 w-full rounded-lg p-2 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-purple-500"
           {...register("password", {
             required: "Please enter your password",
             maxLength: {
@@ -77,8 +79,8 @@ function SignupForm() {
         />
         <label
           htmlFor="password"
-          className="absolute cursor-pointer left-4 top-2 text-gray-400 transition-all duration-300 
-            peer-focus:-top-0 peer-focus:text-xs"
+          className="absolute cursor-pointer left-4 top-0 text-xs text-gray-400 transition-all duration-300 
+            peer-focus:top-0 peer-focus:text-xs peer-placeholder-shown:top-2 peer-placeholder-shown:text-base"
         >
           Password
         </label>
@@ -89,8 +91,9 @@ function SignupForm() {
       <div className="relative mx-auto w-full">
         <input
           id="confirmpassword"
+          placeholder="confirmpassword"
           type="password"
-          className="peer border border-gray-300 w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="peer border border-gray-300 w-full rounded-lg p-2 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-purple-500"
           {...register("confirmpassword", {
             required: "Please confirm your password",
             validate: (value) => value === password || "Passwords do not match",
@@ -98,8 +101,8 @@ function SignupForm() {
         />
         <label
           htmlFor="confirmpassword"
-          className="absolute cursor-pointer left-4 top-2 text-gray-400 transition-all duration-300 
-            peer-focus:-top-0 peer-focus:text-xs"
+          className="absolute cursor-pointer left-4 top-0 text-xs text-gray-400 transition-all duration-300 
+            peer-focus:top-0 peer-focus:text-xs peer-placeholder-shown:top-2 peer-placeholder-shown:text-base"
         >
           Confirm Password
         </label>
