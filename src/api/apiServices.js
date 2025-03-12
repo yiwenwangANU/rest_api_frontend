@@ -99,7 +99,6 @@ export const editPost = async (postData) => {
   }
 
   const formData = new FormData();
-  console.log(postData);
   formData.append("title", postData.title);
   formData.append("content", postData.content);
   if (imageFile) formData.append("image", compressedImage);
@@ -108,7 +107,6 @@ export const editPost = async (postData) => {
       `${API_BASE_URL}/feed/post/${postData.postId}`,
       formData
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -131,7 +129,7 @@ export const deletePost = async (postId) => {
   }
 };
 
-// Create post
+// Create user
 export const createUser = async (userData) => {
   const imageFile = userData.image[0];
   let compressedFile, compressedImage;
@@ -155,9 +153,10 @@ export const createUser = async (userData) => {
 
   // create FormData for axios request
   const formData = new FormData();
-  formData.append("title", userData.email);
-  formData.append("content", userData.password);
-  formData.append("image", compressedImage);
+  formData.append("email", userData.email);
+  formData.append("password", userData.password);
+  formData.append("name", userData.name);
+  if (imageFile) formData.append("image", compressedImage);
 
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/signup`, formData);
