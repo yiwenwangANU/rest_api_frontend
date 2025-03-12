@@ -8,10 +8,14 @@ function SignupForm() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm();
   //   const mutation = useSignup();
   const { modalData, handleCloseModal } = useContext(ModalContext);
   const [imagePreview, setImagePreview] = useState(null);
+
+  const password = watch("password", "");
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -20,13 +24,13 @@ function SignupForm() {
     }
   };
 
-  //   const onSubmit = (data) => {
-  //     mutation.mutate(data, { onSuccess: () => handleCloseModal() });
-  //   };
+  const onSubmit = (data) => {
+    // mutation.mutate(data, { onSuccess: () => handleCloseModal() });
+  };
   return (
     <form
       className="w-full h-full flex flex-col gap-2 p-6 bg-white shadow-lg rounded-lg"
-      //   onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit)}
     >
       <label className="flex justify-center items-center text-center px-10 text-xl font-bold text-purple-950">
         Create your username and password
@@ -35,7 +39,13 @@ function SignupForm() {
         <input
           id="email"
           className="peer border border-gray-300 w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-          {...register("email", { required: true })}
+          {...register("email", {
+            required: "Please enter your email",
+            maxLength: {
+              value: 40,
+              message: "Email must be at most 40 characters long",
+            },
+          })}
         />
         <label
           htmlFor="email"
@@ -45,14 +55,25 @@ function SignupForm() {
           Email
         </label>
         {errors.email && (
-          <span className="text-red-600">This field is required</span>
+          <span className="text-red-600">{errors.email.message}</span>
         )}
       </div>
       <div className="relative mx-auto w-full">
         <input
           id="password"
+          type="password"
           className="peer border border-gray-300 w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-          {...register("password", { required: true })}
+          {...register("password", {
+            required: "Please enter your password",
+            maxLength: {
+              value: 20,
+              message: "Password must be at most 20 characters long",
+            },
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters long",
+            },
+          })}
         />
         <label
           htmlFor="password"
@@ -61,8 +82,29 @@ function SignupForm() {
         >
           Password
         </label>
-        {errors.email && (
-          <span className="text-red-600">This field is required</span>
+        {errors.password && (
+          <span className="text-red-600">{errors.password.message}</span>
+        )}
+      </div>
+      <div className="relative mx-auto w-full">
+        <input
+          id="confirmpassword"
+          type="password"
+          className="peer border border-gray-300 w-full rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          {...register("confirmpassword", {
+            required: "Please confirm your password",
+            validate: (value) => value === password || "Passwords do not match",
+          })}
+        />
+        <label
+          htmlFor="confirmpassword"
+          className="absolute cursor-pointer left-4 top-2 text-gray-400 transition-all duration-300 
+            peer-focus:-top-0 peer-focus:text-xs"
+        >
+          Confirm Password
+        </label>
+        {errors.confirmpassword && (
+          <span className="text-red-600">{errors.confirmpassword.message}</span>
         )}
       </div>
       <label className="block font-semibold text-gray-700">Profile Image</label>
