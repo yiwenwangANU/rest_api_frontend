@@ -36,7 +36,7 @@ function NewPostForm() {
       className="w-full h-full flex flex-col gap-2 p-6 bg-white shadow-lg rounded-lg"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <label className="py-2 mb-5 text-3xl font-bold text-purple-950 border-b-4 border-purple-950">
+      <label className="flex justify-center items-center text-xl font-bold text-purple-950 ">
         {post ? "Edit Post" : "New Post"}
       </label>
       {post ? (

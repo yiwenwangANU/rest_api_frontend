@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { ModalContext } from "./ModalContext";
+import Button from "./Button";
 
 function LoginForm() {
   const {
@@ -18,9 +19,53 @@ function LoginForm() {
       className="w-full h-full flex flex-col gap-2 p-6 bg-white shadow-lg rounded-lg"
       //   onSubmit={handleSubmit(onSubmit)}
     >
-      <label className="py-2 mb-5 text-3xl font-bold text-purple-950 border-b-4 border-purple-950">
+      <label className="flex justify-center items-center text-xl font-bold text-purple-950">
         Login
       </label>
+      <div className="text-xs text-center px-4 text-gray-800">
+        By continuing, you agree to our User Agreement and acknowledge that you
+        understand the Privacy Policy.
+      </div>
+      <div className="relative mx-auto pt-4">
+        <input
+          id="email"
+          className="peer border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          {...register("email", { required: true })}
+        />
+        <label
+          htmlFor="email"
+          className="absolute cursor-pointer left-4 top-6 text-gray-400 transition-all duration-300 
+            peer-focus:top-4 peer-focus:text-xs"
+        >
+          Email
+        </label>
+        {errors.email && (
+          <span className="text-red-600">This field is required</span>
+        )}
+      </div>
+      <div className="relative mx-auto">
+        <input
+          id="password"
+          className="peer border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          {...register("password", { required: true })}
+        />
+        <label
+          htmlFor="password"
+          className="absolute cursor-pointer left-4 top-2 text-gray-400 transition-all duration-300 
+            peer-focus:-top-0 peer-focus:text-xs"
+        >
+          Password
+        </label>
+        {errors.email && (
+          <span className="text-red-600">This field is required</span>
+        )}
+      </div>
+      <div className="text-xs px-4 pt-2 text-gray-600">
+        New to MessageNode? Sign Up
+      </div>
+      <div className="flex justify-center py-2">
+        <Button type="submit">Login</Button>
+      </div>
     </form>
   );
 }
