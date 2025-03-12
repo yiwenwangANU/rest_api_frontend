@@ -173,14 +173,16 @@ export const createUser = async (userData) => {
 
 // Login user
 export const loginUser = async (userData) => {
-  // create FormData for axios request
-  const formData = new FormData();
-  formData.append("email", userData.email);
-  formData.append("password", userData.password);
-
+  // send json data this time
   try {
-    const response = await axios.post(`${API_BASE_URL}/auth/login`, formData);
-    return response.data;
+    const response = await axios.post(`${API_BASE_URL}/auth/login`, userData, {
+      headers: { "Content-Type": "application/json" },
+    });
+    // store jwt in local browser
+    const { token, userId } = response.data;
+    localStorage.setItem("token", token);
+    localStorage.setItem("userId", userId);
+    return;
   } catch (error) {
     if (error.response) {
       console.error("Server responded with:", error.response.data);
