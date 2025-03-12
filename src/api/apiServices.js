@@ -130,3 +130,43 @@ export const deletePost = async (postId) => {
     throw error;
   }
 };
+
+// Create post
+export const createUser = async (userData) => {
+  const imageFile = userData.image[0];
+  let compressedFile, compressedImage;
+  // if there is image upload, compress the image
+  if (imageFile) {
+    const options = {
+      maxSizeMB: 0.1,
+      maxWidthOrHeight: 100,
+      useWebWorker: true,
+    };
+    try {
+      compressedFile = await imageCompression(imageFile, options);
+      compressedImage = new File([compressedFile], imageFile.name, {
+        type: compressedFile.type,
+      });
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
+  // create FormData for axios request
+  const formData = new FormData();
+  formData.append("title", userData.email);
+  formData.append("content", userData.password);
+  formData.append("image", compressedImage);
+  try {
+    const response = await axios.post(`${API_BASE_URL}/auth/signup`, formData);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.error("Server responded with:", error.response.data);
+    } else {
+      console.error("Error:", error.message);
+    }
+    throw error; // Rethrow for error handling in components
+  }
+};

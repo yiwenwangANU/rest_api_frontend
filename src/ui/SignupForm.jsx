@@ -1,7 +1,9 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { ModalContext } from "./ModalContext";
+import useSignup from "../hooks/useSignup";
 import Button from "./Button";
+import LoginForm from "./LoginForm";
 
 function SignupForm() {
   const {
@@ -10,8 +12,8 @@ function SignupForm() {
     formState: { errors },
     watch,
   } = useForm();
-  //   const mutation = useSignup();
-  const { modalData, handleCloseModal } = useContext(ModalContext);
+  const mutation = useSignup();
+  const { handleCloseModal, handleOpenModal } = useContext(ModalContext);
   const [imagePreview, setImagePreview] = useState(null);
 
   const password = watch("password", "");
@@ -25,7 +27,12 @@ function SignupForm() {
   };
 
   const onSubmit = (data) => {
-    // mutation.mutate(data, { onSuccess: () => handleCloseModal() });
+    mutation.mutate(data, {
+      onSuccess: () => {
+        handleCloseModal();
+        handleOpenModal(<LoginForm />);
+      },
+    });
   };
   return (
     <form

@@ -1,14 +1,11 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { signup } from "../api/apiServices";
+import { useMutation } from "@tanstack/react-query";
+import { createUser } from "../api/apiServices";
 import { toast } from "react-toastify";
 
 const useSignup = () => {
-  //   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: signup,
+    mutationFn: createUser,
     onSuccess: () => {
-      // Invalidate and refetch
-      //   queryClient.invalidateQueries({ queryKey: ["getInfinityPosts"] });
       toast.success("User created successfully!");
     },
     onError: (error) => {
