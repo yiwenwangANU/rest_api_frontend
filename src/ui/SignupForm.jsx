@@ -117,6 +117,30 @@ function SignupForm() {
           <span className="text-red-600">{errors.confirmpassword.message}</span>
         )}
       </div>
+      <div className="relative mx-auto w-full">
+        <input
+          id="name"
+          placeholder="name"
+          className="peer border border-gray-300 w-full rounded-lg p-2 placeholder-transparent focus:outline-none focus:ring-2 focus:ring-purple-500"
+          {...register("name", {
+            required: "Please enter your name",
+            maxLength: {
+              value: 40,
+              message: "Name must be at most 40 characters long",
+            },
+          })}
+        />
+        <label
+          htmlFor="name"
+          className="absolute cursor-pointer left-4 top-0 text-xs text-gray-400 transition-all duration-300 
+            peer-focus:top-0 peer-focus:text-xs peer-placeholder-shown:top-2 peer-placeholder-shown:text-base"
+        >
+          Name
+        </label>
+        {errors.name && (
+          <span className="text-red-600">{errors.name.message}</span>
+        )}
+      </div>
       <label className="block font-semibold text-gray-700">Profile Image</label>
       <input
         type="file"

@@ -158,6 +158,7 @@ export const createUser = async (userData) => {
   formData.append("title", userData.email);
   formData.append("content", userData.password);
   formData.append("image", compressedImage);
+
   try {
     const response = await axios.post(`${API_BASE_URL}/auth/signup`, formData);
     return response.data;
