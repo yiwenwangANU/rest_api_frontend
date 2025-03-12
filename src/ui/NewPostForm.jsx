@@ -46,7 +46,7 @@ function NewPostForm() {
           {...register("postId", { required: true })}
         />
       ) : null}
-      <label className="text-lg font-semibold">Title</label>
+      <label className="font-semibold text-gray-700">Title</label>
       <input
         className="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         defaultValue={post?.title}
@@ -56,7 +56,7 @@ function NewPostForm() {
         <span className="text-red-600">This field is required</span>
       )}
 
-      <label className="block text-lg font-semibold">Upload File</label>
+      <label className="block font-semibold text-gray-700">Upload Image</label>
       <input
         type="file"
         {...register("image")}
@@ -77,14 +77,10 @@ function NewPostForm() {
           />
         </div>
       )}
-      <p className="px-2 mt-1 text-sm text-black" id="file_input_help">
+      <p className="px-2 mt-1 text-xs text-black" id="file_input_help">
         JPG, JPEG or PNG (MAX. 800x400px).
       </p>
-      {errors.image && (
-        <span className="text-red-600">This field is required</span>
-      )}
-
-      <label className="text-lg font-semibold">Content</label>
+      <label className="font-semibold text-gray-700">Content</label>
       <textarea
         className="border border-gray-300 rounded-lg h-25 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         defaultValue={post?.content}

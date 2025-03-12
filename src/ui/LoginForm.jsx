@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { ModalContext } from "./ModalContext";
 import Button from "./Button";
+import SignupForm from "./SignupForm";
 
 function LoginForm() {
   const {
@@ -10,7 +11,11 @@ function LoginForm() {
     formState: { errors },
   } = useForm();
   //   const mutation = useSignup();
-  const { modalData, handleCloseModal } = useContext(ModalContext);
+  const { handleOpenModal, handleCloseModal } = useContext(ModalContext);
+  const openSignupForm = () => {
+    handleCloseModal();
+    handleOpenModal(<SignupForm />);
+  };
   //   const onSubmit = (data) => {
   //     mutation.mutate(data, { onSuccess: () => handleCloseModal() });
   //   };
@@ -61,7 +66,13 @@ function LoginForm() {
         )}
       </div>
       <div className="text-xs px-4 pt-2 text-gray-600">
-        New to MessageNode? Sign Up
+        New to MessageNode?{" "}
+        <span
+          onClick={openSignupForm}
+          className="text-purple-800 cursor-pointer"
+        >
+          Sign Up
+        </span>
       </div>
       <div className="flex justify-center py-2">
         <Button type="submit">Login</Button>
