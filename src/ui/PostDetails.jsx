@@ -2,7 +2,7 @@ import { format } from "date-fns";
 
 function PostDetails({ post }) {
   return (
-    <div className="flex flex-col gap-0 w-3/4">
+    <div className="flex flex-col gap-0 md:w-3/4">
       <div className="rounded py-2 px-3">
         <div className="text-stone-400 text-xs">
           XXX - {format(new Date(post.createdAt), "dd/MM/yyyy")}
