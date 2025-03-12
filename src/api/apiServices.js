@@ -170,3 +170,23 @@ export const createUser = async (userData) => {
     throw error; // Rethrow for error handling in components
   }
 };
+
+// Login user
+export const loginUser = async (userData) => {
+  // create FormData for axios request
+  const formData = new FormData();
+  formData.append("email", userData.email);
+  formData.append("password", userData.password);
+
+  try {
+    const response = await axios.post(`${API_BASE_URL}/auth/login`, formData);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.error("Server responded with:", error.response.data);
+    } else {
+      console.error("Error:", error.message);
+    }
+    throw error; // Rethrow for error handling in components
+  }
+};
