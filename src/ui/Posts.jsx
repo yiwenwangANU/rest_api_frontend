@@ -34,6 +34,7 @@ function Posts() {
       {pages.map((page) =>
         page?.posts.map((post) => <Post post={post} key={post?._id} />)
       )}
+      {/* if this div inView, fetch more posts */}
       <div ref={ref}></div>
     </>
   );

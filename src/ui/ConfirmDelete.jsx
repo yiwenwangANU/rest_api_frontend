@@ -23,7 +23,7 @@ function ConfirmDelete({ postId }) {
         cannot be undone.
       </p>
       <div className="flex justify-end gap-4 pt-4">
-        <Button onClick={handleDelete} variant="secondary">
+        <Button onClick={handleDelete} variant="warning">
           Delete
         </Button>
         <Button onClick={handleCloseModal}>Cancel</Button>

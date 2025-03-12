@@ -8,8 +8,7 @@ function NavBar() {
         <Button variant="logo">MessageNode</Button>
       </Link>
       <div className="flex flex-row items-center gap-16">
-        <div className="text-yellow-600 font-semibold text-xl">Feed</div>
-        <div className="text-white font-semibold text-xl">Logout</div>
+        <Button variant="rounded">Login</Button>
       </div>
     </div>
   );
