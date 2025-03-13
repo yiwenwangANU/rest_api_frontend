@@ -1,5 +1,6 @@
 import axios from "axios";
 import imageCompression from "browser-image-compression";
+import axiosInstance from "./axios-instance";
 // Base URL for API requests
 const API_BASE_URL = "http://localhost:8080";
 
@@ -65,7 +66,10 @@ export const createPost = async (postData) => {
   formData.append("content", postData.content);
   formData.append("image", compressedImage);
   try {
-    const response = await axios.post(`${API_BASE_URL}/feed/posts`, formData);
+    const response = await axiosInstance.post(
+      `${API_BASE_URL}/feed/posts`,
+      formData
+    );
     return response.data;
   } catch (error) {
     if (error.response) {
@@ -103,7 +107,7 @@ export const editPost = async (postData) => {
   formData.append("content", postData.content);
   if (imageFile) formData.append("image", compressedImage);
   try {
-    const response = await axios.put(
+    const response = await axiosInstance.put(
       `${API_BASE_URL}/feed/post/${postData.postId}`,
       formData
     );
@@ -121,7 +125,9 @@ export const editPost = async (postData) => {
 // Delete single post
 export const deletePost = async (postId) => {
   try {
-    const response = await axios.delete(`${API_BASE_URL}/feed/post/${postId}`);
+    const response = await axiosInstance.delete(
+      `${API_BASE_URL}/feed/post/${postId}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
