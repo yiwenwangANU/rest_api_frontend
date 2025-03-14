@@ -204,7 +204,7 @@ export const loginUser = async (userData) => {
 export const createComment = async (commentData) => {
   try {
     const response = await axiosInstance.post(
-      `${API_BASE_URL}/comment`,
+      `${API_BASE_URL}/feed/comment`,
       commentData,
       {
         headers: { "Content-Type": "application/json" },

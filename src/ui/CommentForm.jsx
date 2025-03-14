@@ -14,11 +14,7 @@ function CommentForm({ post }) {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
   const textareaRef = useRef(null);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const mutation = useCreateComment();
 
   const handleAddComment = (e) => {
@@ -30,8 +26,7 @@ function CommentForm({ post }) {
   const handleOpenComment = () => {
     setOpen(true);
   };
-  const handleCloseComment = (e) => {
-    e.preventDefault();
+  const handleCloseComment = () => {
     setOpen(false);
   };
   const onSubmit = (data) => {
@@ -58,12 +53,8 @@ function CommentForm({ post }) {
               className="w-full border-0 focus:outline-none p-3"
               {...register("content", {
                 required: true,
-                min: 1,
               })}
             />
-            {errors.content && (
-              <span className="text-red-600">Please input your comment.</span>
-            )}
             <div className="flex flex-row gap-5 justify-end pb-2 pr-2">
               <Button onClick={handleCloseComment} variant="secondary">
                 cancel
