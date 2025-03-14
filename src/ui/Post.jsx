@@ -2,8 +2,21 @@ import { format } from "date-fns";
 import { Link } from "react-router";
 import PostOptions from "./PostOptions";
 import Button from "./Button";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { ModalContext } from "../context/ModalContext";
+import LoginForm from "./LoginForm";
 
 function Post({ post }) {
+  const { userId } = useContext(AuthContext);
+  const { handleOpenModal } = useContext(ModalContext);
+  const handleJoin = (e) => {
+    if (!userId) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleOpenModal(<LoginForm />);
+    }
+  };
   return (
     <Link
       to={`/post/${post._id}`}
@@ -16,7 +29,9 @@ function Post({ post }) {
           {format(new Date(post.createdAt), "dd/MM/yyyy")}
         </div>
         <div className="absolute right-12 top-2">
-          <Button variant="rounded_sm">Join</Button>
+          <Button onClick={handleJoin} variant="rounded_sm">
+            Join
+          </Button>
         </div>
 
         <PostOptions post={post} />
