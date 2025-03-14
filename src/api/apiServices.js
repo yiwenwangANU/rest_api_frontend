@@ -185,9 +185,10 @@ export const loginUser = async (userData) => {
       headers: { "Content-Type": "application/json" },
     });
     // store jwt in local browser
-    const { token, userId } = response.data;
+    const { token, userId, thumbNail } = response.data;
     localStorage.setItem("token", token);
     localStorage.setItem("userId", userId);
+    localStorage.setItem("thumbNail", thumbNail);
     return;
   } catch (error) {
     if (error.response) {
