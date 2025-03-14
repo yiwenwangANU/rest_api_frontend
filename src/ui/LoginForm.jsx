@@ -4,6 +4,7 @@ import { ModalContext } from "../context/ModalContext";
 import useLogin from "../hooks/useLogin";
 import Button from "./Button";
 import SignupForm from "./SignupForm";
+import { AuthContext } from "../context/AuthContext";
 
 function LoginForm() {
   const {
@@ -13,13 +14,19 @@ function LoginForm() {
   } = useForm();
 
   const { handleOpenModal, handleCloseModal } = useContext(ModalContext);
+  const { updateAuth } = useContext(AuthContext);
   const mutation = useLogin();
   const openSignupForm = () => {
     handleCloseModal();
     handleOpenModal(<SignupForm />);
   };
   const onSubmit = (data) => {
-    mutation.mutate(data, { onSuccess: () => handleCloseModal() });
+    mutation.mutate(data, {
+      onSuccess: () => {
+        updateAuth();
+        handleCloseModal();
+      },
+    });
   };
   return (
     <form
