@@ -199,3 +199,24 @@ export const loginUser = async (userData) => {
     throw error; // Rethrow for error handling in components
   }
 };
+
+// Create comment
+export const createComment = async (commentData) => {
+  try {
+    const response = await axiosInstance.post(
+      `${API_BASE_URL}/comment`,
+      commentData,
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      console.error("Server responded with:", error.response.data);
+    } else {
+      console.error("Error:", error.message);
+    }
+    throw error; // Rethrow for error handling in components
+  }
+};

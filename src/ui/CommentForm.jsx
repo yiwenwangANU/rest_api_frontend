@@ -5,6 +5,7 @@ import { ModalContext } from "../context/ModalContext";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import LoginForm from "./LoginForm";
+import { useForm } from "react-hook-form";
 
 function CommentForm() {
   const [open, setOpen] = useState();
@@ -12,6 +13,11 @@ function CommentForm() {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
   const textareaRef = useRef(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const handleAddComment = () => {
     navigate("/");
