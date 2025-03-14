@@ -4,6 +4,8 @@ function Button({ variant = "primary", children, ...props }) {
 
   const variantStyles = {
     primary: "py-2 bg-yellow-500 text-purple-950 rounded hover:bg-yellow-600",
+    secondary:
+      "py-2 bg-purple-900 text-yellow-500 rounded-full hover:bg-purple-950",
     rounded:
       "py-2 bg-yellow-500 text-purple-950 rounded-3xl hover:bg-yellow-600",
     rounded_sm:

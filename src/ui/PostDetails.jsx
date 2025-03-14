@@ -1,6 +1,5 @@
 import { format } from "date-fns";
-import Button from "./Button";
-import { PlusIcon } from "@heroicons/react/16/solid";
+import CommentForm from "./CommentForm";
 
 function PostDetails({ post }) {
   return (
@@ -20,19 +19,15 @@ function PostDetails({ post }) {
             />
             <figure className="h-full w-full m-0 z-10 flex justify-center">
               <img
-                className="h-full max-h-[100vw] object-contain mb-0 relative"
+                className="h-full max-h-150 object-contain mb-0 relative"
                 src={post.imageUrl}
               />
             </figure>
           </div>
         </div>
-
-        <Button variant="rounded">
-          <div className="flex flex-row gap-1">
-            <PlusIcon className="w-5" />
-            <span>Add a comment</span>
-          </div>
-        </Button>
+        <div className="pt-5">
+          <CommentForm />
+        </div>
       </div>
     </div>
   );
