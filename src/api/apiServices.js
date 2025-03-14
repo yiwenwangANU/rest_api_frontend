@@ -220,3 +220,14 @@ export const createComment = async (commentData) => {
     throw error; // Rethrow for error handling in components
   }
 };
+
+// Fetch posts
+export const fetchComments = async (postId) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/feed/comment/${postId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
