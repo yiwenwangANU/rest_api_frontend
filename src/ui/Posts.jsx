@@ -28,7 +28,6 @@ function Posts() {
   if (isError) return <p className="text-red-500">Error: {error.message}</p>;
 
   const pages = data?.pages;
-
   return (
     <>
       {pages.map((page) =>

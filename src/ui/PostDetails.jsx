@@ -4,8 +4,10 @@ function PostDetails({ post }) {
   return (
     <div className="flex flex-col gap-0 md:w-3/4">
       <div className="rounded py-2 px-3">
-        <div className="text-stone-400 text-xs">
-          XXX - {format(new Date(post.createdAt), "dd/MM/yyyy")}
+        <div className="text-stone-400 text-xs flex flex-row gap-1 items-center">
+          <img src={post.creator?.thumbnailUrl} className="w-7" />
+          <div>{post.creator?.name}</div>-{" "}
+          {format(new Date(post.createdAt), "dd/MM/yyyy")}
         </div>
         <div className="font-bold text-white text-2xl pb-2">{post.title}</div>
         <div className="relative overflow-hidden">
