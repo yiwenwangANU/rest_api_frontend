@@ -3,10 +3,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AppLayout from "./ui/AppLayout";
-import AuthLayout from "./ui/AuthLayout";
 import About from "./pages/About";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import SinglePost from "./pages/SinglePost";
 import { ToastContainer } from "react-toastify";
@@ -22,10 +19,6 @@ ReactDOM.createRoot(root).render(
           <Route index element={<Dashboard />} />
           <Route path="about" element={<About />} />
           <Route path="post/:id" element={<SinglePost />} />
-        </Route>
-        <Route element={<AuthLayout />}>
-          <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
         </Route>
       </Routes>
     </BrowserRouter>
