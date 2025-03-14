@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import Button from "./Button";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 import useCreatePost from "../hooks/useCreatePost";
 import useEditPost from "../hooks/useEditPost";
 

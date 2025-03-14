@@ -1,5 +1,5 @@
 import { useContext, useRef } from "react";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 import Overlay from "./Overlay";
 import { XMarkIcon } from "@heroicons/react/16/solid";
 

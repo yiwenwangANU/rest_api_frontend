@@ -4,7 +4,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/16/solid";
 import { useContext, useEffect, useRef, useState } from "react";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 import NewPostForm from "./NewPostForm";
 import ConfirmDelete from "./ConfirmDelete";
 

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import NavBar from "./NavBar";
-import { ModalProvider } from "./ModalContext";
+import { ModalProvider } from "../context/ModalContext";
 import { AuthProvider } from "../context/AuthContext";
 
 function AppLayout() {

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Button from "./Button";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 import useDeletePost from "../hooks/useDeletePost";
 
 function ConfirmDelete({ postId }) {

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 import NewPostForm from "./NewPostForm";
 
 function ModalButton({ children }) {

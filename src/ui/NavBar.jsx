@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import Button from "./Button";
 import { useContext } from "react";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 import LoginForm from "./LoginForm";
 
 function NavBar() {

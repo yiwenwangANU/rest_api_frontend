@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { ModalContext } from "./ModalContext";
+import { ModalContext } from "../context/ModalContext";
 import useLogin from "../hooks/useLogin";
 import Button from "./Button";
 import SignupForm from "./SignupForm";
