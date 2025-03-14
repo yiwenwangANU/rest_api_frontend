@@ -6,6 +6,9 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [thumbNail, setThumbNail] = useState(null);
 
+  const clearThumbNail = () => {
+    setThumbNail(null);
+  };
   useEffect(() => {
     const token = localStorage.getItem("token");
     const thumbNail = localStorage.getItem("thumbNail");
@@ -38,7 +41,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ thumbNail }}>
+    <AuthContext.Provider value={{ thumbNail, clearThumbNail }}>
       {children}
     </AuthContext.Provider>
   );
