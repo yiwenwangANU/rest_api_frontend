@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import CommentForm from "./CommentForm";
+import Comments from "./Comments";
 
 function PostDetails({ post }) {
   return (
@@ -27,6 +28,9 @@ function PostDetails({ post }) {
         </div>
         <div className="pt-5">
           <CommentForm post={post} />
+        </div>
+        <div>
+          <Comments post={post} />
         </div>
       </div>
     </div>
