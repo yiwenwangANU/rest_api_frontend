@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { Link } from "react-router";
 import PostOptions from "./PostOptions";
+import Button from "./Button";
 
 function Post({ post }) {
   return (
@@ -14,8 +15,14 @@ function Post({ post }) {
           <div>{post.creator?.name}</div>-{" "}
           {format(new Date(post.createdAt), "dd/MM/yyyy")}
         </div>
+        <div className="absolute right-12 top-2">
+          <Button variant="rounded_sm">Join</Button>
+        </div>
+
         <PostOptions post={post} />
-        <div className="font-bold text-white text-xl">{post.title}</div>
+        <div className="font-bold text-white text-xl pt-3 pb-1">
+          {post.title}
+        </div>
         <div className="relative overflow-hidden">
           <div className="relative flex justify-center mt-0 bg-black/20">
             <img

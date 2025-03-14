@@ -10,7 +10,7 @@ function PostDetails({ post }) {
           {format(new Date(post.createdAt), "dd/MM/yyyy")}
         </div>
         <div className="font-bold text-white text-2xl pb-2">{post.title}</div>
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden rounded-2xl">
           <div className="relative flex justify-center mt-0 bg-black/20">
             <img
               className="absolute top-0 left-0 w-full h-full opacity-30 blur-md object-cover scale-[1.2] z-0"
