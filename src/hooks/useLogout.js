@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 function useLogout() {
-  const { clearThumbNail } = useContext(AuthContext);
+  const { clearLoginInfo } = useContext(AuthContext);
 
   const logout = () => {
     // Remove token from localStorage
@@ -11,7 +11,7 @@ function useLogout() {
     localStorage.removeItem("thumbNail");
 
     // Update auth context
-    clearThumbNail();
+    clearLoginInfo();
   };
 
   return logout;

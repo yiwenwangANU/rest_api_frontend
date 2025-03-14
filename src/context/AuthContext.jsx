@@ -5,19 +5,23 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [thumbNail, setThumbNail] = useState(null);
+  const [userId, setUserId] = useState(null);
 
-  const clearThumbNail = () => {
+  const clearLoginInfo = () => {
+    setUserId(null);
     setThumbNail(null);
   };
 
   const updateAuth = () => {
     const token = localStorage.getItem("token");
     const thumbNail = localStorage.getItem("thumbNail");
+    const userId = localStorage.getItem("userId");
 
-    // if has thumbNail but no token, remove thumbNail and userId
-    if (thumbNail && !token) {
+    // if has thumbNail or userid but no token, remove thumbNail and userId
+    if ((userId || thumbNail) && !token) {
       localStorage.removeItem("userId");
       localStorage.removeItem("thumbNail");
+      setUserId(null);
       setThumbNail(null);
     }
 
@@ -27,6 +31,7 @@ export const AuthProvider = ({ children }) => {
         // if token not expired
         if (decoded.exp > Date.now() / 1000) {
           setThumbNail(thumbNail);
+          setUserId(userId);
         } else {
           // if expired
           localStorage.removeItem("token");
@@ -45,7 +50,9 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ thumbNail, clearThumbNail, updateAuth }}>
+    <AuthContext.Provider
+      value={{ userId, thumbNail, clearLoginInfo, updateAuth }}
+    >
       {children}
     </AuthContext.Provider>
   );
