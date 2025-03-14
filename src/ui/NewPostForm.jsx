@@ -80,16 +80,7 @@ function NewPostForm() {
       <p className="px-2 mt-1 text-xs text-black" id="file_input_help">
         JPG, JPEG or PNG (MAX. 800x400px).
       </p>
-      <label className="font-semibold text-gray-700">Content</label>
-      <textarea
-        className="border border-gray-300 rounded-lg h-25 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        defaultValue={post?.content}
-        {...register("content", { required: true })}
-      />
 
-      {errors.content && (
-        <span className="text-red-600">This field is required</span>
-      )}
       <div className="flex flex-row gap-4 justify-end py-2">
         <Button type="submit" disabled={mutation.isLoading}>
           {post

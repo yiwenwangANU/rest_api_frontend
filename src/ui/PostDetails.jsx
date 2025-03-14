@@ -1,4 +1,6 @@
 import { format } from "date-fns";
+import Button from "./Button";
+import { PlusIcon } from "@heroicons/react/16/solid";
 
 function PostDetails({ post }) {
   return (
@@ -24,7 +26,13 @@ function PostDetails({ post }) {
             </figure>
           </div>
         </div>
-        <div className="text-white text-xl">{post.content}</div>
+
+        <Button variant="rounded">
+          <div className="flex flex-row gap-1">
+            <PlusIcon className="w-5" />
+            <span>Add a comment</span>
+          </div>
+        </Button>
       </div>
     </div>
   );
