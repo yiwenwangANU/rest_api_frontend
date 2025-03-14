@@ -16,6 +16,7 @@ function NavBar() {
   const { handleOpenModal } = useContext(ModalContext);
   const logout = useLogout();
   const openLoginForm = () => {
+    navigate("/");
     handleOpenModal(<LoginForm />);
   };
   const openCreatePost = () => {

@@ -224,6 +224,7 @@ export const createComment = async (commentData) => {
 // Fetch posts
 export const fetchComments = async (postId) => {
   try {
+    console.log(`${API_BASE_URL}/feed/comment/${postId}`);
     const response = await axios.get(`${API_BASE_URL}/feed/comment/${postId}`);
     return response.data;
   } catch (error) {

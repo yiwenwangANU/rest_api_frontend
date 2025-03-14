@@ -20,13 +20,13 @@ function PostDetails({ post }) {
             />
             <figure className="h-full w-full m-0 z-10 flex justify-center">
               <img
-                className="h-full max-h-150 object-contain mb-0 relative"
+                className="h-full max-h-120 object-contain mb-0 relative"
                 src={post.imageUrl}
               />
             </figure>
           </div>
         </div>
-        <div className="pt-5">
+        <div className="py-5">
           <CommentForm post={post} />
         </div>
         <div>
