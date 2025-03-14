@@ -10,13 +10,21 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("token");
     const thumbNail = localStorage.getItem("thumbNail");
 
+    // if has thumbNail but no token, remove thumbNail and userId
+    if (thumbNail && !token) {
+      localStorage.removeItem("userId");
+      localStorage.removeItem("thumbNail");
+      setThumbNail(null);
+    }
+
     if (token) {
       try {
         const decoded = jwtDecode(token);
-
+        // if token not expired
         if (decoded.exp > Date.now() / 1000) {
           setThumbNail(thumbNail);
         } else {
+          // if expired
           localStorage.removeItem("token");
           localStorage.removeItem("userId");
           localStorage.removeItem("thumbNail");
