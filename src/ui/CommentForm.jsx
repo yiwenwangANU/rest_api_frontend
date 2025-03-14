@@ -6,8 +6,9 @@ import { useNavigate } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import LoginForm from "./LoginForm";
 import { useForm } from "react-hook-form";
+import useCreateComment from "../hooks/useCreateComment";
 
-function CommentForm() {
+function CommentForm({ post }) {
   const [open, setOpen] = useState();
   const { handleOpenModal } = useContext(ModalContext);
   const navigate = useNavigate();
@@ -18,8 +19,10 @@ function CommentForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const mutation = useCreateComment();
 
-  const handleAddComment = () => {
+  const handleAddComment = (e) => {
+    e.preventDefault();
     navigate("/");
     handleOpenModal(<LoginForm />);
   };
@@ -27,10 +30,13 @@ function CommentForm() {
   const handleOpenComment = () => {
     setOpen(true);
   };
-  const handleCloseComment = () => {
+  const handleCloseComment = (e) => {
+    e.preventDefault();
     setOpen(false);
   };
-
+  const onSubmit = (data) => {
+    mutation.mutate(data, { onSuccess: () => handleCloseComment() });
+  };
   useEffect(() => {
     if (open && textareaRef.current) {
       textareaRef.current.focus();
@@ -38,14 +44,26 @@ function CommentForm() {
   }, [open]);
 
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {userId ? (
         open ? (
           <div className="border-1 border-white rounded-2xl text-white mt-4">
+            <input
+              hidden
+              value={post._id}
+              {...register("postId", { required: true })}
+            />
             <textarea
               ref={textareaRef}
               className="w-full border-0 focus:outline-none p-3"
+              {...register("content", {
+                required: true,
+                min: 1,
+              })}
             />
+            {errors.content && (
+              <span className="text-red-600">Please input your comment.</span>
+            )}
             <div className="flex flex-row gap-5 justify-end pb-2 pr-2">
               <Button onClick={handleCloseComment} variant="secondary">
                 cancel
@@ -69,7 +87,7 @@ function CommentForm() {
           </div>
         </Button>
       )}
-    </>
+    </form>
   );
 }
 

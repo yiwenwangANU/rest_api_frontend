@@ -26,7 +26,7 @@ function PostDetails({ post }) {
           </div>
         </div>
         <div className="pt-5">
-          <CommentForm />
+          <CommentForm post={post} />
         </div>
       </div>
     </div>
