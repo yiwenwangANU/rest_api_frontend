@@ -2,7 +2,8 @@ import axios from "axios";
 import imageCompression from "browser-image-compression";
 import axiosInstance from "./axios-instance";
 // Base URL for API requests
-const API_BASE_URL = "http://localhost:8080";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 // Fetch posts
 export const fetchPosts = async () => {
