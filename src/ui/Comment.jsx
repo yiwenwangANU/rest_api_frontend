@@ -1,7 +1,6 @@
 import { format } from "date-fns";
 
 function Comment({ comment }) {
-  console.log(comment);
   return (
     <div className="p-3">
       <div className="text-stone-200 text-xs flex flex-row gap-1 items-center">
