@@ -9,7 +9,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const fetchPosts = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/feed/posts`);
-    console.log(`${API_BASE_URL}/feed/posts`);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -68,6 +67,7 @@ export const createPost = async (postData) => {
   formData.append("content", postData.content);
   formData.append("image", compressedImage);
   try {
+    console.log(`${API_BASE_URL}/feed/posts`);
     const response = await axiosInstance.post(
       `${API_BASE_URL}/feed/posts`,
       formData
