@@ -68,6 +68,7 @@ export const createPost = async (postData) => {
   formData.append("image", compressedImage);
   try {
     console.log(`${API_BASE_URL}/feed/posts`);
+    console.log(`${API_BASE_URL}/feed/posts`);
     const response = await axiosInstance.post(
       `${API_BASE_URL}/feed/posts`,
       formData
