@@ -15,7 +15,7 @@ function Posts() {
     isFetchingNextPage,
   } = useFetchInfinityPosts();
 
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({ threshold: 0, rootMargin: "100px" });
 
   // When the last element is in view and there is another page, fetch next page.
   useEffect(() => {
