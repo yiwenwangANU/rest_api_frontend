@@ -16,6 +16,8 @@ https://github.com/yiwenwangANU/rest_api_backend
 
 ## Preview
 
+![Screenshot Description](./screenshots/image1.png)
+
 ## Getting Started 🚀
 
 ### Installation
@@ -44,7 +46,7 @@ npm run dev
 
 Your app will be available at http://localhost:5173.
 
-## NPM Packages used
+## NPM Packages used 📦
 
 - **Global State Management:**  
   Utilized React Context API to manage and share global state across the application.
