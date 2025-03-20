@@ -16,7 +16,9 @@ https://github.com/yiwenwangANU/rest_api_backend
 
 ## Preview
 
-![Screenshot Description](./screenshots/image1.png)
+![Screenshot 1](./screenshots/image1.png)
+![Screenshot 2](./screenshots/image2.png)
+![Screenshot 2](./screenshots/image3.png)
 
 ## Getting Started 🚀
 
